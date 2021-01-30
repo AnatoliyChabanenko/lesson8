@@ -17,7 +17,6 @@ class MyClass:
 
     def __next__(self):
         if self.index >= len(self.args):
-
             raise StopIteration
         lena = self.args[self.index]
         self.index += 1

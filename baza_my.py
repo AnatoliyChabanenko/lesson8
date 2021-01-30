@@ -40,15 +40,27 @@ class Baza:
 
 
 class Podemnik:
-    VOZMOJNUE_VARIANTU = [(Lizh, Helmet), (Sanki), (Bord, Helmet)]
+    VOZMOJNUE_VARIANTU = [[Lizh, Helmet], [Sanki], [Bord, Helmet]]
 
     @staticmethod
     def check_inventar_of_person(inventar):
-        for i in Podemnik.VOZMOJNUE_VARIANTU:
-            if all(map(lambda x: isinstance(x, i), inventar)):
+
+        for valid_komlekt_org in Podemnik.VOZMOJNUE_VARIANTU:
+            valid_komlekt = valid_komlekt_org.copy()
+            print(valid_komlekt)
+            if len(valid_komlekt) != len(inventar):
+                continue
+            for inv in inventar:
+                if inv.__class__ in valid_komlekt :
+                    valid_komlekt.remove(inv.__class__)
+                else:
+                    break
+            if not valid_komlekt:
                 return True
-            else:
-                raise ValueError('ей ты что-то забыл')
+
+        else:
+            print('fe')
+            return False
 
     # @staticmethod
     # def check_inventar_of_person(inventar):
@@ -65,7 +77,10 @@ class Podemnik:
 
     @staticmethod
     def ride(person: 'Person'):
-        if Podemnik.check_inventar_of_person(person.inventar):
+        x = Podemnik.check_inventar_of_person(person.inventar)
+        print(x)
+        if x:
+            print(f'kata {person.name}')
             for example in person.inventar:
                 example.use()
 
@@ -138,15 +153,18 @@ if __name__ == '__main__':
     print(b1.__dict__)
     p1.take_inventar(b1, l1)
     p1.take_inventar(b1, l2)
-    Podemnik.ride(p1)
+
     print(p1.__dict__)
     p2 = Person('vasul', 1000)
     p2.take_inventar(b1,bo2)
     p2.take_inventar(b1,h2)
-    Podemnik.ride(p2)
+    p3 = Person('vadik',3000)
+    Podemnik.ride(p1)
+
+    Podemnik.ride(p3)
+
     p2.retern_inventar(b1,h2)
 
-    print(p2.__dict__)
 
 
 

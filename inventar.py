@@ -79,7 +79,6 @@ class Inventar:
 
     @owner.setter
     def owner(self, new_owner):
-        from baza import Baza
         if self.owner is None:
             self.__owner = new_owner
 
