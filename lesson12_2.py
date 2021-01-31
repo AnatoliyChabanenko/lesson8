@@ -1,4 +1,3 @@
-
 class Author:
     def __init__(self, author_name, author_country, author_birthday):
         self.author_name = author_name

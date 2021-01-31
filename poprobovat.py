@@ -33,7 +33,9 @@ class Baza:
             self._inventar.pop(self._inventar.index(invent))
 
     def vozvrat(self, invent: Inventar):
-        self._inventar.append(invent)
+        if invent.owner is self:
+            self._inventar.append(invent)
+        raise ValueError('это инвентарь не той бази')
 
     def __str__(self):
         return f'{self._inventar}'
@@ -44,30 +46,21 @@ class Podemnik:
 
     @staticmethod
     def check_inventar_of_person(inventar):
-
-        for valid_komlekt_org in Podemnik.VOZMOJNUE_VARIANTU:
-            valid_komlekt = valid_komlekt_org.copy()
-            print(valid_komlekt)
-            if len(valid_komlekt) != len(inventar):
-                continue
-            for inv in inventar:
-                if inv.__class__ in valid_komlekt :
-                    valid_komlekt.remove(inv.__class__)
-                else:
-                    break
-            if not valid_komlekt:
+        if any(map(lambda x: isinstance(x, Lizh), inventar)):
+            if any(map(lambda x: isinstance(x, Helmet), inventar)):
                 return True
+        if any(map(lambda x: isinstance(x, Bord), inventar)):
+            if any(map(lambda x: isinstance(x, Helmet), inventar)):
+                return True
+        if any(map(lambda x: isinstance(x, Sanki), inventar)):
+            return True
 
         else:
-            print('fe')
-            return False
+            raise ValueError('ей ты что-то забыл')
 
     @staticmethod
     def ride(person: 'Person'):
-        x = Podemnik.check_inventar_of_person(person.inventar)
-        print(x)
-        if x:
-            print(f'kata {person.name}')
+        if Podemnik.check_inventar_of_person(person.inventar):
             for example in person.inventar:
                 example.use()
 
@@ -82,12 +75,13 @@ class Podemnik:
         self.index += 1
         return y
 
+
 class Person:
 
     def __init__(self, name, money):
         self.name = name
         self.__inventar = []
-        self._money = money
+        self.money = money
 
     @property
     def inventar(self):
@@ -96,7 +90,7 @@ class Person:
     def take_inventar(self, baza: Baza, inventar: Inventar):
         if inventar in baza._inventar:
             baza.arenda(inventar)
-            self._money -= inventar.cost
+            self.money -= inventar.cost
             self.inventar.append(inventar)
         else:
             raise ValueError('такой икиперовки нету ')
@@ -107,10 +101,6 @@ class Person:
             self.inventar.pop(self.inventar.index(inv_))
         else:
             raise ValueError('что-то пошло не так ')
-
-    @property
-    def money(self):
-        return self._money
 
     def __iter__(self):
         self.index = 0
@@ -125,34 +115,23 @@ class Person:
 
 
 if __name__ == '__main__':
-    p1 = Person('ivan', 3000)
-    b1 = Baza('Bukovel')
-    l1 = Lizh(343)
-    l2 = Helmet(323)
-    h2 = Helmet(434)
-    bo2 = Bord(322)
-    b1.add_inventar(l1)
-    b1.add_inventar(l2)
-    b1.add_inventar(bo2)
-    b1.add_inventar(h2)
-
-
-    print(b1.__dict__)
-    p1.take_inventar(b1, l1)
-    p1.take_inventar(b1, l2)
-
-    print(p1.__dict__)
-    p2 = Person('vasul', 1000)
-    p2.take_inventar(b1,bo2)
-    p2.take_inventar(b1,h2)
-    p3 = Person('vadik',3000)
+    p1 = Person('Vasul', 3000)
+    p2 = Person('igor', 1000)
+    l1 = Lizh(300)
+    l2 = Lizh(200)
+    l3 = Lizh(400)
+    h1 = Helmet(200)
+    a = Baza('bukovel')
+    a1 = Baza('Bukovel2 ')
+    a.add_inventar(h1)
+    a.add_inventar(l1)
+    p1.take_inventar(a, h1)
+    p1.take_inventar(a, l1)
     Podemnik.ride(p1)
-
-    Podemnik.ride(p3)
-
-    p2.retern_inventar(b1,h2)
-
-
-
-
+    p1.retern_inventar(a, l1)
+    print(h1.__dict__)
+    print(a1.__dict__)
+    print(a.__dict__)
+    print(l1.__dict__)
+    print(p1.__dict__)
 
