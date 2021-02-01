@@ -31,5 +31,4 @@ class PersonTestCase(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    # PersonTestCase.BOSS = lesson15_2.Boss()
-    unittest.main()
+    pass
