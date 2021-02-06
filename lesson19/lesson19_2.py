@@ -1,4 +1,4 @@
-
+import os
 class FileManager:
     counter = 0
 
@@ -7,6 +7,10 @@ class FileManager:
         return cls.counter
 
     def __init__(self, filename, mode):
+        if os.path.exists(filename):
+            self.filename = filename
+        if mode in [ 'r' , 'w', 'a']:
+            self.mode = mode
         self.filename = filename
         self.mode = mode
         self.file = None
@@ -21,6 +25,5 @@ class FileManager:
         self.file.close()
 
 if __name__ == '__main__':
-    with FileManager('txt1.txt', 'r') as f:
-        f.write()
+    pass
 
