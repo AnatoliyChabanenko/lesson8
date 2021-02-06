@@ -1,6 +1,9 @@
 from lesson19 import lesson19_2
 import unittest
 
+def vuzov(dat):
+    with lesson19_2.FileManager('txt1.txt', 'r') as f:
+        f.write(dat)
 
 
 class Test_my_class(unittest.TestCase):
@@ -22,8 +25,8 @@ class Test_my_class(unittest.TestCase):
         self.assertEqual(test_faile_manader.mode, self.file_mode)
 
     def test_1(self):
-        with self.test_fail_manader as f:
-            self.assertRaises(SyntaxError , f.read())
+        with self.assertRaises(FileNotFoundError ,):
+            vuzov('3213213')
 
 
 

@@ -21,6 +21,6 @@ class FileManager:
         self.file.close()
 
 if __name__ == '__main__':
-    pass
-    with FileManager('test_12.txt' ,'r')  as f:
-        print(f.read())
+    with FileManager('txt1.txt', 'r') as f:
+        f.write()
+
