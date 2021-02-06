@@ -19,10 +19,6 @@ class Test_my_class(unittest.TestCase):
         self.assertEqual(test_faile_manader.filename,self.file_name)
         self.assertEqual(test_faile_manader.mode, self.file_mode)
 
-    def test_create_faild(self):
-        test_faile_manader = lesson19_2.FileManager(self.file_name, self.file_mode)
-        self.assertEqual(test_faile_manader.filename, self.file_name)
-        self.assertEqual(test_faile_manader.mode, self.file_mode)
 
     def test_1(self):
         with self.assertRaises(FileNotFoundError ,):
