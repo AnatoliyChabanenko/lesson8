@@ -9,7 +9,7 @@ class FileManager:
     def __init__(self, filename, mode):
         if os.path.exists(filename):
             self.filename = filename
-        if mode in [ 'r' , 'w', 'a']:
+        if mode in [ 'r' , 'w', 'a' , 'x' , 'a+']:
             self.mode = mode
         self.filename = filename
         self.mode = mode
