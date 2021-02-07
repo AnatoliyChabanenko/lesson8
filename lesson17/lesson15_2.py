@@ -7,7 +7,6 @@ class Boss:
         self._workers = []
 
 
-
     def workers_ad(self, worker : 'Worker'):
         self._workers.append(worker)
 

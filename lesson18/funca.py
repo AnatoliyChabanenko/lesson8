@@ -33,15 +33,6 @@ class PhoneBook:
             self.__contacts.append(dat)
             self.__store_to_disk()
 
-            # for k in dat:
-            #     if k in self.DEFAULT_DATA:
-            #         if type(self.DEFAULT_DATA[k]) != type(dat[k]):
-            #             raise Exception
-            #         else:
-            #             self.__contacts.append(dat)
-            #             self.__store_to_disk()
-            #     else:
-            #         raise Exception(f"Не установлено значение ключа {k}")
         else:
             raise Exception
 
