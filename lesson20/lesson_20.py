@@ -2,7 +2,7 @@ from typing import Optional , Union , List
 from lesson16.inventar import Inventar , Helmet, Lizh , Sanki, Bord
 
 class Baza:
-    def __init__(self, name: Optional[str] , money :Union[int, float]) -> None :
+    def __init__(self, name: Optional[str] , money :Union[int, float])  :
         self.name = name
         self.__inventar : List[Inventar] = []
         self.money  = money
