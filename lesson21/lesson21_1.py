@@ -10,7 +10,7 @@ from typing import List, Tuple
 # 5 - n^2
 # 6 - log n
 
-def question1(first_list: List[int], second_list: List[int]) -> List[int]: # 3 сложность O(n)
+def question1(first_list: List[int], second_list: List[int]) -> List[int]: # 3 сложность O(n**2)
     res: List[int] = []
     for el_first_list in first_list:
         if el_first_list in second_list:
@@ -24,7 +24,7 @@ def question2(n: int) -> int: # цикл выпониться один раз #2
     return n
 
 
-def question3(first_list: List[int], second_list: List[int]) -> List[int]:#  не понятно ну очень интересно O(n**2)
+def question3(first_list: List[int], second_list: List[int]) -> List[int]:#  O(n)
     temp: List[int] = first_list[:]
     for el_second_list in second_list:
         flag = False
