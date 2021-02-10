@@ -15,7 +15,7 @@ class Baza:
             raise ValueError
 
     @property
-    def baze_inventar(self):
+    def baze_inventar(self) :
         return self.__inventar
 
     def arenda(self, invent : Inventar):

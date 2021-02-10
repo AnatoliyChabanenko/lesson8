@@ -33,7 +33,7 @@
 - что есть на сейчаc
 - что на рукахє
 """
-from datetime import datetime
+# from datetime import datetime
 from random import randint
 
 
