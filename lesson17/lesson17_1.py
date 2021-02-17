@@ -36,3 +36,7 @@ mas [1] [2] = 2
 mas [3] [0] = 4
 print(get_empty_list(mas))
 pre_print(mas)
+
+
+if __name__ == '__main__':
+    pass
