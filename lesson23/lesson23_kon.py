@@ -30,32 +30,31 @@ def get_empty_list(mas):  # проверка на где на одске ище 
 
 
 def menshe_chislo(x0, y0, x1, y1, skolko_raz):
-    h = [[0 for j in range(8)] for i in range(8)]  # здесь создаю доску
 
-    def konyaka(x0, y0, x1, y1, hod=1):
-        h[x0][y0] = 1
+    def konyaka(x0, y0, x1, y1, hod=1, x2= x0 ,y2=y0):
         h[x1][y1] = 2
         vozmohnur_hodu = []
         for i in getValidMoves(x0, y0):
-            if i in get_empty_list(h):  # тут не нравиться
+            if h [i[0]] [i[1]] == 0 :
                 vozmohnur_hodu.append(i)
-        if [x1, y1] in vozmohnur_hodu:
-            vozmohnur_hodu.clear()
-            vozmohnur_hodu.append([x1, y1])
-        if vozmohnur_hodu == []:
-            return 99  # тут не нравиться если , если возварашать None минимальное не щитает
-        if h[x0][y0] == h[x1][y1]:
-            return hod
+            if h[i[0]][i[1]] == 2:
+                return hod
+
+        if hod > 6 :
+            return konyaka(x2, y2, x1, y1, hod=1)
+
         if h[x0][y0] != h[x1][y1]:
             f = choice(vozmohnur_hodu)
             return konyaka(f[0], f[1], x1, y1, hod + 1)
 
     res = []
     for i in range(skolko_raz):
-        res.append(konyaka(x0, y0, x1, y1))
         h = [[0 for j in range(8)] for i in range(8)]
+        h[x0][y0] = 1
+        res.append(konyaka(x0, y0, x1, y1))
+
     return res
 
 
 if __name__ == '__main__':
-    print(menshe_chislo(5, 2, 7, 7, 10))
+    print(menshe_chislo(1, 1, 7, 7, 10))
