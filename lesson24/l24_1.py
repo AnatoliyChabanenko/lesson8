@@ -71,7 +71,7 @@ class UnorderedList:
             temp.set_next(current.get_next())
             current.set_next(temp)
         else:
-            raise ("index out of range")
+            raise  ValueError ('индекса нету' )
 
 
     def pop(self):
@@ -79,7 +79,7 @@ class UnorderedList:
         previous = None
 
         if current == None:
-            return "No item in list"
+            return ' нету в листе '
         while current.get_next() != None:
             previous = current
             current = current.get_next()
@@ -102,7 +102,7 @@ class UnorderedList:
         if found:
             return index
         else:
-            return "Not Found"
+            return 'нету такого'
 
     def __repr__(self):
         representation = "<UnorderedList: "
