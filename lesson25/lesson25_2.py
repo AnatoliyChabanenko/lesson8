@@ -6,7 +6,7 @@ def FibonacciGenerator(n):
     else:
         return FibonacciGenerator(n - 1) + FibonacciGenerator(n - 2)
 
-def FibonacciSearch(arr, x):# не без помощи интернета мне это далось
+def FibonacciSearch(arr, x):
     m = 0
     while FibonacciGenerator(m) < len(arr):
         m = m + 1
