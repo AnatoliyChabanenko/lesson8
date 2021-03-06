@@ -1,4 +1,4 @@
-# Python TCP Client A
+
 import socket
 
 host = socket.gethostname()

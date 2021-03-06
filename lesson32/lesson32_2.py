@@ -2,7 +2,6 @@ import socket
 from threading import Thread
 
 
-# Multithreaded Python server : TCP Server Socket Thread Pool
 class ClientThread(Thread):
 
     def __init__(self, ip, port):
@@ -17,13 +16,12 @@ class ClientThread(Thread):
             massage = input("Multithreaded Python server : Enter Response from Server/Enter exit:")
             if massage == 'exit':
                 break
-            conn.send(massage.encode())  # echo
+            conn.send(massage.encode())
 
 
-# Multithreaded Python server : TCP Server Socket Program Stub
 TCP_IP = '0.0.0.0'
 TCP_PORT = 2004
-BUFFER_SIZE = 20  # Usually 1024, but we need quick response
+BUFFER_SIZE = 20
 
 tcpServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 tcpServer.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)

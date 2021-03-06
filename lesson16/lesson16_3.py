@@ -4,11 +4,6 @@ class MyClass:
         self.args = args
 
 
-    def __getitem__(self, item):
-        if 0 <= item < len(self.args):
-            return self.args[item]
-        raise ValueError ( 'нету такого ')
-
 
     def __iter__(self):
         print('call')

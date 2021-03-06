@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 class Iink_Iterator:
     URL = 'https://kmr.gov.ua/uk/stenogramu'
     def __init__(self ):

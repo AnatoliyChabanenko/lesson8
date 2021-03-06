@@ -5,7 +5,7 @@ HOST = 'https://kmr.gov.ua'
 URL = 'https://kmr.gov.ua/uk/stenogramu'
 HEADERS= {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36', 'accept': '*/*'}
 
-d = '<a href="/uk/file/157173/download?token=YZ1B3-VvpEV43QzdNpyPt_0Kx7WXveCcREr3Y_Voudg" class="format odt field-content" size_eye="11">doc</a>'
+
 def get_htms(url , params= None):
     r = requests.get(url, headers = HEADERS, params=params)
     return r
@@ -51,6 +51,6 @@ def get_pages_cou(html):
 if __name__ == '__main__':
     d = pase()
     print(d)
-    # for link in d:
-    #     download_file(link,'lesson31')
+    for link in d:
+        download_file(link,'lesson31')
 
