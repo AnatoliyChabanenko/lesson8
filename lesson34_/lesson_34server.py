@@ -11,6 +11,9 @@ class Window(QDialog):
     def __init__(self):
         super().__init__()
         self.flag = 0
+        self.UiComponents()
+
+    def UiComponents(self):
         self.chatTextField = QLineEdit(self)
         self.chatTextField.resize(480, 100)
         self.chatTextField.move(10, 350)
