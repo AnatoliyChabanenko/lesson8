@@ -21,4 +21,3 @@ if __name__ == '__main__':
     urls = ['https://api.pushshift.io/reddit/comment/search/']
     loop = asyncio.get_event_loop()
     results = loop.run_until_complete(main(urls))
-    print('\n'.join(results))
