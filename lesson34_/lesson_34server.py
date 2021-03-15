@@ -107,10 +107,8 @@ class ClientThread(QThread):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-
     window = Window()
     serverThread = ServerThread(window)
     serverThread.start()
     window.exec()
-
     sys.exit(app.exec_())
