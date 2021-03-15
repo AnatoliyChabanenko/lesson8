@@ -11,9 +11,9 @@ async def get_url(url, session):
     return f'Successfully downloaded {url} to file {file_name}'
 
 
-async def main(urls):
+async def main(url):
     async with aiohttp.ClientSession() as session:
-        tasks = [get_url(url, session) for url in urls] # возможно подставить несколько url
+        tasks = get_url(url, session)
         return await asyncio.gather(tasks)
 
 if __name__ == '__main__':
